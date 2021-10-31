@@ -73,6 +73,7 @@ The initial balance of the account is €0 because of a lack of information. The
 | T2.5 | BV7,12             | 1001           | 0.70%         |
 | T2.6 | BV8,[12]           | Long.MAX_VALUE | 0.70%         |
 | T2.7 | BV1*,9             | Long.MIN_VALUE | 0             |
+| T2.8 | BV2*,[9]           | 0              | 0             |
 
 
 # 4. Verify test design to ensure completeness
