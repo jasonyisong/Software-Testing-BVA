@@ -206,4 +206,4 @@ Weaknesses:
 
 # My thoughts
 
-It is very suitable for the core computing function test of trading system
+BVA is an important supplement to EP, this area is easy to be underestimated.
