@@ -78,25 +78,33 @@ The initial balance of the account is €0 because of a lack of information. The
 
 # 4. Verify test design to ensure completeness
 
-| TCI  | Parameter    | Equivalence Partition | Test Case  |
-|------|--------------|-----------------------|------------|
-| EP1* | Deposit      | (*)Long.MIN_VALUE..0  | T1.4       |
-| EP2  |              | 1..100                | T1.1       |
-| EP3  |              | 101..1000             | T1.2       |
-| EP4  |              | 1001..Long.MAX_VALUE  | T1.3       |
-| EP5  | Return Value | 0                     | T1.4       |
-| EP6  |              | 0.30%                 | T1.1       |
-| EP7  |              | 0.50%                 | T1.2       |
-| EP8  |              | 0.70%                 | T1.3       |
+| TCI  | Parameter    | Boundary Value | Test Case  |
+|------|--------------|----------------|------------|
+| BV1* | Deposit      | Long.MIN_VALUE | T2.7       |
+| BV2* |              | 0              | T2.8       |
+| BV3  |              | 1              | T2.1       |
+| BV4  |              | 100            | T2.2       |
+| BV5  |              | 101            | T2.3       |
+| BV6  |              | 1000           | T2.4       |
+| BV7  |              | 1001           | T2.5       |
+| BV8  |              | Long.MAX_VALUE | T2.6       |
+| BV9  | Return Value | 0              | T2.7       |
+| BV10 |              | 0.30%          | T2.1       |
+| BV11 |              | 0.50%          | T2.3       |
+| BV12 |              | 0.70%          | T2.5       |
 
 # 5. Implementation of tests
 
-| ID   | TCI Covered | Inputs<br/>Equivalence Value | Exp. Result<br/>Return Value  |
-|------|-------------|-------------------|---------------|
-| T1.1 | EP2,6       | 50                | 0.30%         |
-| T1.2 | EP3,7       | 150               | 0.50%         |
-| T1.3 | EP4,8       | 2000              | 0.70%         |
-| T1.4 | EP1*,5      | -100              | 0             |
+| ID   | Test Cases Covered | Inputs<br/> Deposit | Exp. Result<br/>Return Value|
+|------|--------------------|----------------|---------------|
+| T2.1 | BV3,10             | 1              | 0.30%         |
+| T2.2 | BV4,[10]           | 100            | 0.30%         |
+| T2.3 | BV5,11             | 101            | 0.50%         |
+| T2.4 | BV6,[11]           | 1000           | 0.50%         |
+| T2.5 | BV7,12             | 1001           | 0.70%         |
+| T2.6 | BV8,[12]           | Long.MAX_VALUE | 0.70%         |
+| T2.7 | BV1*,9             | Long.MIN_VALUE | 0             |
+| T2.8 | BV2*,[9]           | 0              | 0             |
 
 # 6. Execution of tests
 
@@ -105,7 +113,7 @@ Java + TestNG
 Test automation with dataproviders
 
 ```java
-package trade;
+package trade_test_BVA;
 
 import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
@@ -116,10 +124,14 @@ public class InterestCalculatorTest {
 	// test data
 	private static Object[][] testData = new Object[][] {
 			// id, variable1, variable2, ... variableN, expected
-		    {"T1.1",	   50,		 0.003},
-		    {"T1.2",  	  150, 		 0.005},
-		    {"T1.3", 	 2000, 		 0.007}, 
-		    {"T1.4", 	 -100,    	     0},
+		    {"T2.1",				    1,		 0.003},
+	            {"T2.2",  	 			  100, 		 0.003},
+		    {"T2.3", 				  101, 		 0.005}, 
+		    {"T2.4", 				 1000,    	 0.005},
+		    {"T2.5",				 1001,		 0.007},
+		    {"T2.6", 		 9223372036854775807L, 		 0.007},
+		    {"T2.7",		-9223372036854775807L, 		     0}, 
+		    {"T2.8", 	   			    0,    	     0},
 	};
 
 	@DataProvider(name = "data")
@@ -128,7 +140,7 @@ public class InterestCalculatorTest {
 	}
 
 	@Test(dataProvider = "data")
-	public void test(String id, double variable1,  double expected) {
+	public void test(String id, long variable1,  double expected) {
 		 assertEquals(InterestCalculator.interestRate(variable1), expected);
 	}
 }
@@ -140,20 +152,18 @@ Console log
 
 ```text
 [RemoteTestNG] detected TestNG version 7.4.0
-PASSED: test("T1.2", 150, 0.005)
-PASSED: test("T1.4", -100, 0)
-PASSED: test("T1.1", 50, 0.003)
-PASSED: test("T1.3", 2000, 0.007)
+PASSED: test("T2.6", 9223372036854775807, 0.007)
+PASSED: test("T2.2", 100, 0.003)
+PASSED: test("T2.4", 1000, 0.005)
+PASSED: test("T2.5", 1001, 0.007)
+PASSED: test("T2.7", -9223372036854775807, 0)
+PASSED: test("T2.8", 0, 0)
+PASSED: test("T2.1", 1, 0.003)
+PASSED: test("T2.3", 101, 0.005)
 
 ===============================================
     Default test
     Tests run: 1, Failures: 0, Skips: 0
-===============================================
-
-
-===============================================
-Default suite
-Total tests run: 4, Passes: 4, Failures: 0, Skips: 0
 ===============================================
 
 ```
