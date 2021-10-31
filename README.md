@@ -2,7 +2,7 @@
 
 Study Notes - SOFTWARE TESTING of Maynooth Universtiy  by Dr. Joe Timoney
 
-# Equivalence Partitions
+# Boundary Values Analysis
 
 - ST ACTIVITIES
 
@@ -28,19 +28,16 @@ The initial balance of the account is €0 because of a lack of information. The
 
 # 1. Analysis of SW / spec that informs the test
 
-| Parameter    | Equivalence Partition |         |
-|--------------|-----------------------|---------|
-| Deposit      | (*)Long.MIN_VALUE..0  | Input   |
-|              | 1..100                |         |
-|              | 101..1000             |         |
-|              | 1001..Long.MAX_VALUE  |         |
-
-| Parameter    | Equivalence Patition  |         |
-|--------------|-----------------------|---------|
-| Return Value | 0                     | Output  |
-|              | 0.30%                 |         |
-|              | 0.50%                 |         |
-|              | 0.70%                 |         |
+| Parameter    | Minimum Value  | Maximum Value   |
+|--------------|----------------|-----------------|
+| Deposit      | Long.MIN_VALUE | 0               |
+|              | 1              | 100             |
+|              | 101            | 1000            |
+|              | 1001           | Long.MAX_VALUE  |
+| Return Value | 0              |                 |
+|              | 0.30%          |                 |
+|              | 0.50%          |                 |
+|              | 0.70%          |                 |
 
 
 # 2. Identify test coverage items
