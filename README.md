@@ -151,7 +151,7 @@ public class InterestCalculatorTest {
 Console log
 
 ```text
-[RemoteTestNG] detected TestNG version 7.4.0
+RemoteTestNG] detected TestNG version 7.4.0
 PASSED: test("T2.6", 9223372036854775807, 0.007)
 PASSED: test("T2.2", 100, 0.003)
 PASSED: test("T2.4", 1000, 0.005)
@@ -166,34 +166,43 @@ PASSED: test("T2.3", 101, 0.005)
     Tests run: 1, Failures: 0, Skips: 0
 ===============================================
 
+
+===============================================
+Default suite
+Total tests run: 8, Passes: 8, Failures: 0, Skips: 0
+===============================================
+
 ```
 
 
-# EP FAULT MODEL
+# A MORE DETAILED LOOK AT BVA
 
-The equivalence partition fault model is where entire ranges of values are not processed correctly. 
-
-These faults can be associated with incorrect decisions in the code, or missing sections of functionality.
-
-By testing with at least one value from every equivalence partition, where every value should be
-processed in the same way, EP testing attempts to find these faults.
+- By definition, BVA covers all EP test coverage items
+- With twice as many tests, the min and max of each EP has been tested at least once, using a min number of tests
+- BVA focuses on finding errors with decisions
+  - Decisions often fail at boundaries
+  - E.g.x<0insteadofx<=0
+- BVA often uncovers more errors than EP alone
+- But has twice as many test cases --- a trade-off
+- Boundary Values DO NOT OVERLAP
+  - One value at top, one at bottom
+- Goal: Achieve 100% coverage of boundary values
 
 # STRENGTHS AND WEAKNESSES OF EP
 
 Strengths:
-- A good basic level of testing
-- Good for data processing applications where input can be easily identified, is distinct and allows for easy partitioning
-- Provides a structured means for identifying basic test coverage items.
+- Test data values are provided by the technique;
+- Tests focus on areas where faults are more likely to be created by the developer.
 
 Weaknesses:
-- No testing of correct processing on partition edges
-- No combination testing
+- Doubles number of TCIs compared to EP;
+- No Combinations.
 
-# KEY POINTS ON EP
+# KEY POINTS
 
-EP is used to test basic software functionality
-- Each ranges of values with 'equivalent processing' is a test coverage item
-- A representative value from each range is selected as test data
+- BVA is used to ensure correct processing with data values at start and end of every EP;
+- Each BVA value is a test coverage item;
+- Each BVA value is used as test case.
 
 # My thoughts
 
