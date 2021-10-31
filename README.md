@@ -35,11 +35,12 @@ The initial balance of the account is €0 because of a lack of information. The
 |              | 101            | 1000            |
 |              | 1001           | Long.MAX_VALUE  |
 
-|--------------|----------------|-----------------|
-| Return Value | 0              		  |
-|              | 0.30%                            |
-|              | 0.50%                            |
-|              | 0.70%                            |
+|              |.               |
+|--------------|----------------|
+| Return Value | 0              |
+|              | 0.30%          |
+|              | 0.50%          |
+|              | 0.70%          |
 
 
 
