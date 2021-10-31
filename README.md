@@ -46,16 +46,20 @@ The initial balance of the account is €0 because of a lack of information. The
 
 # 2. Identify test coverage items
 
-| TCI  | Parameter    | Equivalence Partition | Test Case              |
-|------|--------------|-----------------------|------------------------|
-| EP1* | Deposit      | (*)Long.MIN_VALUE..0  | To be completed later  |
-| EP2  |              | 1..100                |                        |
-| EP3  |              | 101..1000             |                        |
-| EP4  |              | 1001..Long.MAX_VALUE  |                        |
-| EP5  | Return Value | 0                     |                        |
-| EP6  |              | 0.30%                 |                        |
-| EP7  |              | 0.50%                 |                        |
-| EP8  |              | 0.70%                 |                        |
+| TCI  | Parameter    | Boundary Value | Test Case              |
+|------|--------------|----------------|------------------------|
+| EP1* | Deposit      | Long.MIN_VALUE | To be completed later  |
+| EP2* |              | 0              |                        |
+| EP3  |              | 1              |                        |
+| EP4  |              | 100            |                        |
+| EP5  |              | 101            |                        |
+| EP6  |              | 1000           |                        |
+| EP7  |              | 1001           |                        |
+| EP8  |              | Long.MAX_VALUE |                        |
+| EP9  | Return Value | 0              |                        |
+| EP10 |              | 0.30%          |                        |
+| EP11 |              | 0.50%          |                        |
+| EP12 |              | 0.70%          |                        |
 
 
 # 3. Identify test cases
