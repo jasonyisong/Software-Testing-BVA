@@ -48,51 +48,31 @@ The initial balance of the account is €0 because of a lack of information. The
 
 | TCI  | Parameter    | Boundary Value | Test Case              |
 |------|--------------|----------------|------------------------|
-| EP1* | Deposit      | Long.MIN_VALUE | To be completed later  |
-| EP2* |              | 0              |                        |
-| EP3  |              | 1              |                        |
-| EP4  |              | 100            |                        |
-| EP5  |              | 101            |                        |
-| EP6  |              | 1000           |                        |
-| EP7  |              | 1001           |                        |
-| EP8  |              | Long.MAX_VALUE |                        |
-| EP9  | Return Value | 0              |                        |
-| EP10 |              | 0.30%          |                        |
-| EP11 |              | 0.50%          |                        |
-| EP12 |              | 0.70%          |                        |
+| BV1* | Deposit      | Long.MIN_VALUE | To be completed later  |
+| BV2* |              | 0              |                        |
+| BV3  |              | 1              |                        |
+| BV4  |              | 100            |                        |
+| BV5  |              | 101            |                        |
+| BV6  |              | 1000           |                        |
+| BV7  |              | 1001           |                        |
+| BV8  |              | Long.MAX_VALUE |                        |
+| BV9  | Return Value | 0              |                        |
+| BV10 |              | 0.30%          |                        |
+| BV11 |              | 0.50%          |                        |
+| BV12 |              | 0.70%          |                        |
 
 
 # 3. Identify test cases
 
-| Case | Parameter    | Equivalence Partition | Test  |
-|------|--------------|-----------------------|-------|
-| EP1* | Deposit      | (*)Long.MIN_VALUE..0  |       |
-| EP2  |              | 1..100                |       |
-| EP3  |              | 101..1000             |       |
-| EP4  |              | 1001..Long.MAX_VALUE  |       |
-| EP5  | Return Value | 0                     |       |
-| EP6  |              | 0.30%                 |       |
-| EP7  |              | 0.50%                 |       |
-| EP8  |              | 0.70%                 |       |
-
-| Parameter    | Equivalence Partition | Equivalence Value  |
-|--------------|-----------------------|--------------------|
-| Deposit      | (*)Long.MIN_VALUE..0  | -100               |
-|              | 1..100                | 50                 |
-|              | 101..1000             | 150                |
-|              | 1001..Long.MAX_VALUE  | 2000               |
-| Return Value | 0                     | 0                  |
-|              | 0.30%                 | 0.30%              |
-|              | 0.50%                 | 0.50%              |
-|              | 0.70%                 | 0.70%              |
-
-
-| ID   | TCI Covered | Inputs<br/>Equivalence Value | Exp. Result<br/>Return Value  |
-|------|-------------|-------------------|---------------|
-| T1.1 | EP2,6       | 50                | 0.30%         |
-| T1.2 | EP3,7       | 150               | 0.50%         |
-| T1.3 | EP4,8       | 2000              | 0.70%         |
-| T1.4 | EP1*,5      | -100              | 0             |
+| ID   | Test Cases Covered | Inputs<br/> Deposit | Exp. Result<br/>Return Value|
+|------|--------------------|----------------|---------------|
+| T2.1 | BV3,10             | 1              | 0.30%         |
+| T2.2 | BV4,[10]           | 100            | 0.30%         |
+| T2.3 | BV5,11             | 101            | 0.50%         |
+| T2.4 | BV6,[11]           | 1000           | 0.50%         |
+| T2.5 | BV7,12             | 1001           | 0.70%         |
+| T2.6 | BV8,[12]           | Long.MAX_VALUE | 0.70%         |
+| T2.7 | BV1*,9             | Long.MIN_VALUE | 0             |
 
 
 # 4. Verify test design to ensure completeness
