@@ -34,11 +34,16 @@ The initial balance of the account is €0 because of a lack of information. The
 |              | 1              | 100             |
 |              | 101            | 1000            |
 |              | 1001           | Long.MAX_VALUE  |
-| Return Value | *0*              		 ||
+| Return Value | 0              		 ||
 |              | 0.30%                           ||
 |              | 0.50%                           ||
 |              | 0.70%                           ||
 
+|1|1|3|4|5|
+|-|-|-|-|-|
+|1|1|2|2|6|
+|1|1|2|2|7|
+|1|4|3|5|5|
 
 # 2. Identify test coverage items
 
