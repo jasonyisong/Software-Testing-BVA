@@ -39,6 +39,11 @@ The initial balance of the account is €0 because of a lack of information. The
 |              | 0.50%                            |
 |              | 0.70%                            |
 
+| | Grouping ||
+First Header | Second Header | Third Header |
+------------ | :-----------: | -----------: |
+Content | Long Cell ||
+Content | Cell | Cell |
 
 # 2. Identify test coverage items
 
